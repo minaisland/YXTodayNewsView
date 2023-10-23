@@ -1,0 +1,23 @@
+PODS:
+  - Fakery (5.1.0)
+  - YXTodayNewsView (0.0.1)
+
+DEPENDENCIES:
+  - Fakery
+  - YXTodayNewsView (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Fakery
+
+EXTERNAL SOURCES:
+  YXTodayNewsView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Fakery: a90caff00ca5cacde6c161c3eafc72314a03d34d
+  YXTodayNewsView: 240886a7614dabd6801c4849f45da5de4cfac72f
+
+PODFILE CHECKSUM: 6049b4b67e82141be802e66a22a3403500db3d5f
+
+COCOAPODS: 1.10.1

@@ -1,0 +1,8 @@
+platform :ios, '9.0'
+use_frameworks!
+ENV['SWIFT_VERSION'] = '5'
+
+target "YXTodayNewsViewDemo" do
+    pod 'YXTodayNewsView', :path => '../'
+    pod 'Fakery'
+end
