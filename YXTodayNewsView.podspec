@@ -8,4 +8,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '9.0'
   s.source       = { :git => "https://github.com/minaisland/YXTodayNewsView.git", :branch => "master" }
   s.source_files  = "YXTodayNewsView/*.{h,m}","YXTodayNewsView/*/*.{h,m}"
+  s.requires_arc = true
+  s.dependency 'SDWebImage', '5.18.3'
 end

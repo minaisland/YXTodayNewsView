@@ -12,6 +12,8 @@
 		4A9880142AE66A9F003AA1D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9880132AE66A9F003AA1D5 /* Assets.xcassets */; };
 		4A9880172AE66A9F003AA1D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A9880152AE66A9F003AA1D5 /* LaunchScreen.storyboard */; };
 		4A98801A2AE66A9F003AA1D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9880192AE66A9F003AA1D5 /* main.m */; };
+		4A9880252AE673DD003AA1D5 /* FakeryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9880242AE673DD003AA1D5 /* FakeryHelper.swift */; };
+		4A9880432AE69B9E003AA1D5 /* MenuItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9880422AE69B9E003AA1D5 /* MenuItemModel.m */; };
 		82371171A1B442A9483F02CB /* Pods_YXTodayNewsViewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA10BCF95F8B7F7AC0C5BE03 /* Pods_YXTodayNewsViewDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,10 @@
 		4A9880162AE66A9F003AA1D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A9880182AE66A9F003AA1D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A9880192AE66A9F003AA1D5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A9880232AE673DC003AA1D5 /* YXTodayNewsViewDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YXTodayNewsViewDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		4A9880242AE673DD003AA1D5 /* FakeryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeryHelper.swift; sourceTree = "<group>"; };
+		4A9880412AE69B9E003AA1D5 /* MenuItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItemModel.h; sourceTree = "<group>"; };
+		4A9880422AE69B9E003AA1D5 /* MenuItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuItemModel.m; sourceTree = "<group>"; };
 		99C9BE6581CF24D05424BD71 /* Pods-YXTodayNewsViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YXTodayNewsViewDemo.release.xcconfig"; path = "Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		CA10BCF95F8B7F7AC0C5BE03 /* Pods_YXTodayNewsViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YXTodayNewsViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDC03EF9DC70142D7763D79D /* Pods-YXTodayNewsViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YXTodayNewsViewDemo.debug.xcconfig"; path = "Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,12 +79,16 @@
 			children = (
 				4A9880072AE66A9E003AA1D5 /* AppDelegate.h */,
 				4A9880082AE66A9E003AA1D5 /* AppDelegate.m */,
+				4A9880242AE673DD003AA1D5 /* FakeryHelper.swift */,
 				4A98800D2AE66A9E003AA1D5 /* MainViewController.h */,
 				4A98800E2AE66A9E003AA1D5 /* MainViewController.m */,
+				4A9880412AE69B9E003AA1D5 /* MenuItemModel.h */,
+				4A9880422AE69B9E003AA1D5 /* MenuItemModel.m */,
 				4A9880132AE66A9F003AA1D5 /* Assets.xcassets */,
 				4A9880152AE66A9F003AA1D5 /* LaunchScreen.storyboard */,
 				4A9880182AE66A9F003AA1D5 /* Info.plist */,
 				4A9880192AE66A9F003AA1D5 /* main.m */,
+				4A9880232AE673DC003AA1D5 /* YXTodayNewsViewDemo-Bridging-Header.h */,
 			);
 			path = YXTodayNewsViewDemo;
 			sourceTree = "<group>";
@@ -89,7 +99,6 @@
 				CDC03EF9DC70142D7763D79D /* Pods-YXTodayNewsViewDemo.debug.xcconfig */,
 				99C9BE6581CF24D05424BD71 /* Pods-YXTodayNewsViewDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -126,6 +135,7 @@
 				TargetAttributes = {
 					4A9880032AE66A9E003AA1D5 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -209,6 +219,8 @@
 				4A98800F2AE66A9E003AA1D5 /* MainViewController.m in Sources */,
 				4A9880092AE66A9E003AA1D5 /* AppDelegate.m in Sources */,
 				4A98801A2AE66A9F003AA1D5 /* main.m in Sources */,
+				4A9880252AE673DD003AA1D5 /* FakeryHelper.swift in Sources */,
+				4A9880432AE69B9E003AA1D5 /* MenuItemModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -362,6 +375,9 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "YXTodayNewsViewDemo/YXTodayNewsViewDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -372,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -392,6 +409,8 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "YXTodayNewsViewDemo/YXTodayNewsViewDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
