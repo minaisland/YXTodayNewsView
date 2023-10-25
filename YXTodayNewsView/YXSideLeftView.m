@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UILabel *subTitleLabel;
 @property (nonatomic, strong) UIImageView *avatarView;
 @property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UIButton *likeBtn;
 
 @end
 
@@ -37,6 +38,7 @@
     self.monthdayLabel = [self createLabel];
     self.titleLabel = [self createLabel];
     self.subTitleLabel = [self createLabel];
+    self.nameLabel = [self createLabel];
 }
 
 - (void)setMenuItem:(id<YXMenuItem>)menuItem {
@@ -45,12 +47,13 @@
     [self setTitle:menuItem.title];
     [self setSubTitle:menuItem.subTitle];
     [self setAvatarUrl:menuItem.avatarUrl];
+    [self setName:menuItem.name];
 }
 
 - (void)setDate:(NSDate *)date {
     self.yearLabel.attributedText = [self createAttributedString:[self dateStringFromFormat:@"yyyy"] font:self.param.yxSideLeftYearFont textColor:self.param.yxSideLeftDateColor];
     self.yearLabel.transform = CGAffineTransformMakeRotation(M_PI*90.0f/180.0);
-    self.yearLabel.frame = CGRectMake(14, 15, 15, 22);
+    self.yearLabel.frame = CGRectMake(14, 15, 10, 22);
     self.yearLabel.textAlignment = NSTextAlignmentCenter;
     
     NSMutableAttributedString *mutStr = [[NSMutableAttributedString alloc] initWithString:[self dateStringFromFormat:@"MM/dd"]];
@@ -84,8 +87,14 @@
 }
 
 - (void)setAvatarUrl:(NSString *)url {
-    self.avatarView.frame = CGRectMake(14, self.yx_height-30, 24, 24);
+    self.avatarView.frame = CGRectMake(14, self.yx_height-self.param.yxSideLeftAvatarWidth-self.param.yxSideLeftAvatarBottomMargin, self.param.yxSideLeftAvatarWidth, self.param.yxSideLeftAvatarWidth);
     [self.avatarView sd_setImageWithURL:[NSURL URLWithString:url]];
+}
+
+- (void)setName:(NSString *)name {
+    self.nameLabel.attributedText = [self createAttributedString:name font:self.param.yxSideLeftNameFont textColor:self.param.yxSideLeftNameColor];
+    CGSize size = [self.nameLabel sizeThatFits:CGSizeMake(200, 18)];
+    self.nameLabel.frame = CGRectMake(self.avatarView.yx_x + self.avatarView.yx_width + 8, (self.avatarView.yx_y*2 + self.avatarView.yx_height - size.height)/2, size.width, size.height);
 }
 
 - (UIView *)lineView {
@@ -108,7 +117,7 @@
 - (UIImageView *)avatarView {
     if (!_avatarView) {
         _avatarView = [[UIImageView alloc] init];
-        _avatarView.yx_cornerRadius = 12.0f;
+        _avatarView.yx_cornerRadius = self.param.yxSideLeftAvatarWidth / 2;
         [self addSubview:_avatarView];
     }
     return _avatarView;

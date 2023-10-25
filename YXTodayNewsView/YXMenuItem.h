@@ -16,12 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *subTitle;
 @property (nonatomic, readonly) NSString *avatarUrl;
 @property (nonatomic, readonly) NSString *imageUrl;
-
-- (NSString *)title;
-- (NSString *)subTitle;
-- (NSString *)avatarUrl;
-- (NSString *)imageUrl;
-- (NSDate *)date;
+@property (nonatomic, readonly) NSString *name;
 
 @end
 

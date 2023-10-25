@@ -25,7 +25,8 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIColor*,            
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, NSShadow*,                yxTextShadow)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,                yxSideLeftMonthdaybaselineOffset)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,                yxSideLeftSubTitleBottomMargin)
-
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,               yxSideLeftAvatarBottomMargin)
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,               yxSideLeftAvatarWidth)
 
 + (YXTodayNewsParam *)defaultParam {
     return [YXTodayNewsParam new];
@@ -46,6 +47,9 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,             
         
         _yxSideLeftMonthdaybaselineOffset = 0;
         _yxSideLeftSubTitleBottomMargin = 44.0f;
+        
+        _yxSideLeftAvatarBottomMargin = 15.0f;
+        _yxSideLeftAvatarWidth = 24.0f;
         
         /// 统一白色
         _yxSideLeftTitleColor = _yxSideLeftSubTitleColor = _yxSideLeftNameColor = _yxSideLeftDateColor = [UIColor whiteColor];

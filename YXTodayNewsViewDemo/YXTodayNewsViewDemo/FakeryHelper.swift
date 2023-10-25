@@ -83,6 +83,7 @@ class FakeryHelper: NSObject {
             model.title = "今日鑫首"
             model.subTitle = "悦鑫菜园真人种植体验"
             model.avatarUrl = self.avatar;
+            model.name = self.faker.name.name()
             arr.append(model)
         }
         return arr

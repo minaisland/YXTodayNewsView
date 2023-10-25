@@ -55,6 +55,12 @@ YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloa
 
 YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftSubTitleBottomMargin)
 
+/// 头像底部边距
+YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftAvatarBottomMargin)
+
+// 头像大小
+YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftAvatarWidth)
+
 + (instancetype)defaultParam;
 
 @end
