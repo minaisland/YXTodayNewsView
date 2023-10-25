@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *avatarUrl;
 @property (nonatomic, readonly) NSString *imageUrl;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSInteger likeCount;
 
 @end
 

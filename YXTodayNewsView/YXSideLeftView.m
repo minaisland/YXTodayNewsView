@@ -9,6 +9,9 @@
 #import "UIView+YXExtension.h"
 #import <SDWebImage/SDWebImage.h>
 
+#define kLikeBtnWidth  60.0f
+#define kLikeBtnHeight 44.0f
+
 @interface YXSideLeftView()
 
 @property (nonatomic, strong) UIImageView *coverView;
@@ -19,7 +22,6 @@
 @property (nonatomic, strong) UILabel *subTitleLabel;
 @property (nonatomic, strong) UIImageView *avatarView;
 @property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UIButton *likeBtn;
 
 @end
 
@@ -51,6 +53,7 @@
     [self setSubTitle:menuItem.subTitle];
     [self setAvatarUrl:menuItem.avatarUrl];
     [self setName:menuItem.name];
+    [self setLikeCount:menuItem.likeCount];
 }
 
 - (void)setDate:(NSDate *)date {
@@ -108,11 +111,17 @@
     self.nameLabel.frame = CGRectMake(self.avatarView.yx_x + self.avatarView.yx_width + 8, (self.avatarView.yx_y*2 + self.avatarView.yx_height - size.height)/2, size.width, size.height);
 }
 
+- (void)setLikeCount:(NSInteger)likeCount {
+    [self.likeBtn setTitle:[NSString stringWithFormat:@"%ld", likeCount] forState:UIControlStateNormal];
+    self.likeBtn.frame = CGRectMake(self.yx_width-kLikeBtnWidth, (self.avatarView.yx_y*2 + self.avatarView.yx_height - kLikeBtnHeight)/2, kLikeBtnWidth, kLikeBtnHeight);
+}
+
 - (UIImageView *)coverView {
     if (!_coverView) {
         _coverView = [[UIImageView alloc] initWithFrame:CGRectMake(kGeneralPadding, 0, self.yx_width, self.yx_height)];
         _coverView.contentMode = UIViewContentModeScaleAspectFill;
         _coverView.clipsToBounds = YES;
+        [_coverView yx_setRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadius:4.0f];
     }
     return _coverView;
 }
@@ -149,6 +158,22 @@
         [self addSubview:_avatarBtn];
     }
     return _avatarBtn;
+}
+
+- (UIButton *)likeBtn {
+    if (!_likeBtn) {
+        _likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *like_off = [UIImage imageNamed:@"like_off" inBundle:kResBundle(self) compatibleWithTraitCollection:nil];
+        UIImage *like_on = [UIImage imageNamed:@"like_on" inBundle:kResBundle(self) compatibleWithTraitCollection:nil];
+        
+        _likeBtn.titleLabel.font = self.param.yxSideLeftLikeTitleFont;
+        _likeBtn.titleLabel.textColor = self.param.yxSideLeftLikeTitleColor;
+        _likeBtn.titleEdgeInsets = self.param.yxSideLeftLikeTitleInsets;
+        [_likeBtn setImage:like_off forState:UIControlStateNormal];
+        [_likeBtn setImage:like_on forState:UIControlStateSelected];
+        [self addSubview:_likeBtn];
+    }
+    return _likeBtn;
 }
 
 - (NSString *)dateStringFromFormat:(NSString *)format {

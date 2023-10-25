@@ -17,7 +17,7 @@
 		4A98801A2AE66A9F003AA1D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9880192AE66A9F003AA1D5 /* main.m */; };
 		4A9880252AE673DD003AA1D5 /* FakeryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9880242AE673DD003AA1D5 /* FakeryHelper.swift */; };
 		4A9880432AE69B9E003AA1D5 /* MenuItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9880422AE69B9E003AA1D5 /* MenuItemModel.m */; };
-		82371171A1B442A9483F02CB /* Pods_YXTodayNewsViewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA10BCF95F8B7F7AC0C5BE03 /* Pods_YXTodayNewsViewDemo.framework */; };
+		5CA56A6A39F660D30DBD1353 /* libPods-YXTodayNewsViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC179C7EDF2BA308F21AA3CC /* libPods-YXTodayNewsViewDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +38,8 @@
 		4A9880412AE69B9E003AA1D5 /* MenuItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItemModel.h; sourceTree = "<group>"; };
 		4A9880422AE69B9E003AA1D5 /* MenuItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuItemModel.m; sourceTree = "<group>"; };
 		99C9BE6581CF24D05424BD71 /* Pods-YXTodayNewsViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YXTodayNewsViewDemo.release.xcconfig"; path = "Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo.release.xcconfig"; sourceTree = "<group>"; };
-		CA10BCF95F8B7F7AC0C5BE03 /* Pods_YXTodayNewsViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YXTodayNewsViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDC03EF9DC70142D7763D79D /* Pods-YXTodayNewsViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YXTodayNewsViewDemo.debug.xcconfig"; path = "Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		FC179C7EDF2BA308F21AA3CC /* libPods-YXTodayNewsViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YXTodayNewsViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82371171A1B442A9483F02CB /* Pods_YXTodayNewsViewDemo.framework in Frameworks */,
+				5CA56A6A39F660D30DBD1353 /* libPods-YXTodayNewsViewDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 		1013FE9C9C5522543C340C92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CA10BCF95F8B7F7AC0C5BE03 /* Pods_YXTodayNewsViewDemo.framework */,
+				FC179C7EDF2BA308F21AA3CC /* libPods-YXTodayNewsViewDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,7 +130,7 @@
 				4A9880002AE66A9E003AA1D5 /* Sources */,
 				4A9880012AE66A9E003AA1D5 /* Frameworks */,
 				4A9880022AE66A9E003AA1D5 /* Resources */,
-				7D7AE23D6FD0BF6E284DCA24 /* [CP] Embed Pods Frameworks */,
+				1F3B31AF3BDACEF6E1411EA3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,21 +190,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7D7AE23D6FD0BF6E284DCA24 /* [CP] Embed Pods Frameworks */ = {
+		1F3B31AF3BDACEF6E1411EA3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YXTodayNewsViewDemo/Pods-YXTodayNewsViewDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CAB988014A341F1745CC1C46 /* [CP] Check Pods Manifest.lock */ = {

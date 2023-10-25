@@ -21,6 +21,9 @@
 
 #define kBoldFont(fontSize) [UIFont boldSystemFontOfSize:fontSize]
 
+//传入任意对象定位获取资源bundle的路径
+#define kResBundle(obj) [NSBundle bundleWithPath:[[NSBundle bundleForClass:[obj class]] pathForResource:@"Resources" ofType:@"bundle"]]
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (YXExtension)
@@ -33,6 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat yx_y;
 @property (nonatomic, assign) CGFloat yx_x;
+
+/** 设置单个或多个圆角 */
+- (void)yx_setRoundingCorners:(UIRectCorner)corners cornerRadius:(CGFloat)cornerRadius;
 
 @end
 

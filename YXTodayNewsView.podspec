@@ -6,8 +6,10 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT License', :file => 'LICENSE' }
   s.author       = { "minaisland" => "konaod@gmail.com" }
   s.platform     = :ios, '9.0'
-  s.source       = { :git => "https://github.com/minaisland/YXTodayNewsView.git", :branch => "master" }
+  s.source       = { :git => "https://github.com/minaisland/YXTodayNewsView.git", :branch => "main" }
   s.source_files  = "YXTodayNewsView/*.{h,m}","YXTodayNewsView/*/*.{h,m}"
+#  s.resource = "YXTodayNewsView/Resources/*.xcassets"
+  s.resource_bundles = {"Resources" => ["YXTodayNewsView/Resources/*.xcassets"]}
   s.requires_arc = true
   s.dependency 'SDWebImage', '5.18.3'
 end

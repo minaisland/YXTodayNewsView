@@ -67,4 +67,15 @@
     return self.layer.cornerRadius;
 }
 
+- (void)yx_setRoundingCorners:(UIRectCorner)corners cornerRadius:(CGFloat)cornerRadius {
+    UIBezierPath *maskPath = [UIBezierPath
+        bezierPathWithRoundedRect:self.bounds
+        byRoundingCorners:corners
+        cornerRadii:CGSizeMake(cornerRadius, cornerRadius)
+    ];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
 @end

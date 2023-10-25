@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *subTitle;
 @property (nonatomic, copy) NSString *avatarUrl;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) NSInteger likeCount;
 
 @end
 

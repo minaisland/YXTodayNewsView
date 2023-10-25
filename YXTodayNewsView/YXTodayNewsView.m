@@ -24,7 +24,7 @@ static CGFloat _sideBtnMaxHeight;
 @property (nonatomic, strong) YXSideLeftView *sideLeftView;
 @property (nonatomic, strong) UIView *sideRightView;
 @property (nonatomic, strong) UITableView *sideMenuView;
-@property (nonatomic, strong) UITapGestureRecognizer *sideLeftViewTapGesture;
+@property (nonatomic, strong) UIButton *sideRightBottomBtn;
 
 @end
 
@@ -80,6 +80,18 @@ static CGFloat _sideBtnMaxHeight;
     }
 }
 
+- (void)likeBtnOnPress:(UIButton *)btn {
+    if ([self.delegate respondsToSelector:@selector(todayNewsView:likeBtnOnPressWithItem:)]) {
+        [self.delegate todayNewsView:self likeBtnOnPressWithItem:self.sideLeftView.menuItem];
+    }
+}
+
+- (void)sideRightBottomBtnOnPress:(UIButton *)btn {
+    if ([self.delegate respondsToSelector:@selector(todayNewsView:likeBtnOnPressWithItem:)]) {
+        [self.delegate todayNewsView:self sideRightBottomBtnOnPress:btn];
+    }
+}
+
 - (void)sideLeftViewOnTap:(UITapGestureRecognizer *)gesture {
     if ([self.delegate respondsToSelector:@selector(todayNewsView:sideLeftViewOnTapWithItem:)]) {
         [self.delegate todayNewsView:self sideLeftViewOnTapWithItem:self.sideLeftView.menuItem];
@@ -130,21 +142,15 @@ static CGFloat _sideBtnMaxHeight;
         _sideLeftView.param = self.param;
         [_sideLeftView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sideLeftViewOnTap:)]];
         [_sideLeftView.avatarBtn addTarget:self action:@selector(avatarViewOnPress:) forControlEvents:UIControlEventTouchUpInside];
+        [_sideLeftView.likeBtn addTarget:self action:@selector(likeBtnOnPress:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sideLeftView;
-}
-
-- (UITapGestureRecognizer *)sideLeftViewTapGesture {
-    if (!_sideLeftViewTapGesture) {
-        _sideLeftViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sideLeftViewOnTap:)];
-    }
-    return _sideLeftViewTapGesture;
 }
 
 - (UIView *)sideRightView {
     if (!_sideRightView) {
         _sideRightView = [[UIView alloc] initWithFrame:CGRectMake(kGeneralPadding + _sideLeftWidth, 0, _sideMenuWidth + kGeneralPadding, _viewHeight)];
-        
+        [_sideRightView yx_setRoundingCorners:(UIRectCornerTopRight | UIRectCornerBottomRight) cornerRadius:4.0f];
         CAGradientLayer *gradientLayer = [CAGradientLayer layer];
         gradientLayer.frame = _sideRightView.bounds;
         gradientLayer.startPoint = CGPointMake(0, 0);
@@ -155,8 +161,27 @@ static CGFloat _sideBtnMaxHeight;
 
         [_sideRightView.layer addSublayer:gradientLayer];
         [_sideRightView addSubview:self.sideMenuView];
+        [_sideRightView addSubview:self.sideRightBottomBtn];
     }
     return _sideRightView;
+}
+
+- (UIButton *)sideRightBottomBtn {
+    if (!_sideRightBottomBtn) {
+        _sideRightBottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *arrow = [UIImage imageNamed:@"arrow" inBundle:kResBundle(self) compatibleWithTraitCollection:nil];
+        _sideRightBottomBtn.titleLabel.font = kMediumFont(12);
+        _sideRightBottomBtn.titleLabel.textColor = [UIColor whiteColor];
+        [_sideRightBottomBtn setTitle:self.param.yxSideRightBottomTitle forState:UIControlStateNormal];
+        [_sideRightBottomBtn setImage:arrow forState:UIControlStateNormal];
+        [_sideRightBottomBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
+        [_sideRightBottomBtn setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
+        [_sideRightBottomBtn sizeToFit];
+        _sideRightBottomBtn.yx_x = kGeneralPadding;
+        _sideRightBottomBtn.yx_y = ((self.yx_height-_sideBtnMaxHeight)*2+_sideBtnMaxHeight-_sideRightBottomBtn.yx_height)/2;
+        [_sideRightBottomBtn addTarget:self action:@selector(sideRightBottomBtnOnPress:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _sideRightBottomBtn;
 }
 
 - (UITableView *)sideMenuView {

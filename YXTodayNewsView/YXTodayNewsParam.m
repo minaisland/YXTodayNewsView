@@ -27,6 +27,10 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,             
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,                yxSideLeftSubTitleBottomMargin)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,               yxSideLeftAvatarBottomMargin)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,               yxSideLeftAvatarWidth)
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIFont*,               yxSideLeftLikeTitleFont)
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIColor*,               yxSideLeftLikeTitleColor)
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIEdgeInsets,               yxSideLeftLikeTitleInsets)
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, NSString *,               yxSideRightBottomTitle)
 
 + (YXTodayNewsParam *)defaultParam {
     return [YXTodayNewsParam new];
@@ -51,8 +55,12 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,             
         _yxSideLeftAvatarBottomMargin = 15.0f;
         _yxSideLeftAvatarWidth = 24.0f;
         
+        _yxSideLeftLikeTitleFont = kMediumFont(12);
+        _yxSideLeftLikeTitleInsets = UIEdgeInsetsZero;
         /// 统一白色
-        _yxSideLeftTitleColor = _yxSideLeftSubTitleColor = _yxSideLeftNameColor = _yxSideLeftDateColor = [UIColor whiteColor];
+        _yxSideLeftLikeTitleColor = _yxSideLeftTitleColor = _yxSideLeftSubTitleColor = _yxSideLeftNameColor = _yxSideLeftDateColor = [UIColor whiteColor];
+        
+        _yxSideRightBottomTitle = @"回顾";
         
         _yxTextShadow = [self defaultTextShadow];
     }

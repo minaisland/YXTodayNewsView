@@ -24,17 +24,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YXTodayNewsParam : NSObject
 
-/// 大标题字体 default [UIFont 18]
+/// 主标题字体 default [UIFont 18]
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIFont*,               yxSideLeftTitleFont)
-/// 大标题字体颜色 default [whiteColor]
+/// 主标题字体颜色 default [whiteColor]
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIColor*,               yxSideLeftTitleColor)
-
+/// 副标题字体 default [UIFont 18]
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIFont*,               yxSideLeftSubTitleFont)
-
+/// 副标题字体颜色 default [whiteColor]
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIColor*,               yxSideLeftSubTitleColor)
-
+/// 用户名字体 default [UIFont 18]
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIFont*,               yxSideLeftNameFont)
-
+/// 用户名字体颜色 default [whiteColor]
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIColor*,               yxSideLeftNameColor)
 
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIFont*,               yxSideLeftYearFont)
@@ -54,12 +54,18 @@ YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, NSShad
 YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftMonthdayBaselineOffset)
 
 YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftSubTitleBottomMargin)
-
 /// 头像底部边距
 YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftAvatarBottomMargin)
-
-// 头像大小
+/// 头像大小  default [24.0f]
 YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftAvatarWidth)
+
+YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIFont*,               yxSideLeftLikeTitleFont)
+
+YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIColor*,               yxSideLeftLikeTitleColor)
+
+YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, UIEdgeInsets,               yxSideLeftLikeTitleInsets)
+
+YXTodayNewsPropStatementAndPropSetFuncStatement(copy, YXTodayNewsParam, NSString *,               yxSideRightBottomTitle)
 
 + (instancetype)defaultParam;
 

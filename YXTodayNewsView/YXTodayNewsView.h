@@ -17,7 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 - (void)todayNewsView:(YXTodayNewsView *)todayNewsView avatarViewOnPressWithItem:(id<YXMenuItem>)item;
+- (void)todayNewsView:(YXTodayNewsView *)todayNewsView likeBtnOnPressWithItem:(id<YXMenuItem>)item;
 - (void)todayNewsView:(YXTodayNewsView *)todayNewsView sideLeftViewOnTapWithItem:(id<YXMenuItem>)item;
+- (void)todayNewsView:(YXTodayNewsView *)todayNewsView sideRightBottomBtnOnPress:(UIButton *)btn;
 
 @end
 

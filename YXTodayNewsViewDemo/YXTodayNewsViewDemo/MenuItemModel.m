@@ -7,6 +7,12 @@
 
 #import "MenuItemModel.h"
 
+@interface MenuItemModel()
+
+@end
+
 @implementation MenuItemModel
+
+@synthesize name = _name;
 
 @end
