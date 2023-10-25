@@ -81,13 +81,13 @@ static CGFloat _sideBtnMaxHeight;
 }
 
 - (void)likeBtnOnPress:(UIButton *)btn {
-    if ([self.delegate respondsToSelector:@selector(todayNewsView:likeBtnOnPressWithItem:)]) {
-        [self.delegate todayNewsView:self likeBtnOnPressWithItem:self.sideLeftView.menuItem];
+    if ([self.delegate respondsToSelector:@selector(todayNewsView:likeBtnOnPress:item:)]) {
+        [self.delegate todayNewsView:self likeBtnOnPress:btn item:self.sideLeftView.menuItem];
     }
 }
 
 - (void)sideRightBottomBtnOnPress:(UIButton *)btn {
-    if ([self.delegate respondsToSelector:@selector(todayNewsView:likeBtnOnPressWithItem:)]) {
+    if ([self.delegate respondsToSelector:@selector(todayNewsView:sideRightBottomBtnOnPress:)]) {
         [self.delegate todayNewsView:self sideRightBottomBtnOnPress:btn];
     }
 }
@@ -133,7 +133,7 @@ static CGFloat _sideBtnMaxHeight;
     [self.sideMenuView reloadData];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self tableView:self.sideMenuView didSelectRowAtIndexPath:indexPath];
-    [self.sideMenuView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [self.sideMenuView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
 - (YXSideLeftView *)sideLeftView {
