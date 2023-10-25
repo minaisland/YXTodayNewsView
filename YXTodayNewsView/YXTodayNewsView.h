@@ -6,22 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YXMenuItem.h"
+#import "YXSideLeftView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol YXMenuItem <NSObject>
-
-@property (nonatomic, copy) NSString *imageUrl;
-
-@end
-
 @interface YXTodayNewsView : UIView
 
-@property (nonatomic, strong) NSArray *menuItems;
+@property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) NSString *coverUrl;
-@property (nonatomic, strong) UIColor *sideViewStartColor;
-@property (nonatomic, strong) UIColor *sideViewEndColor;
-@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) YXTodayNewsParam *param;
 
 - (id)initWithPoint:(CGPoint)point;
 

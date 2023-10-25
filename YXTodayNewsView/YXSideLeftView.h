@@ -6,12 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YXMenuItem.h"
+#import "YXTodayNewsParam.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YXSideLeftView : UIView
 
-@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) id<YXMenuItem> menuItem;
+@property (nonatomic, strong) YXTodayNewsParam *param;
+
 
 @end
 

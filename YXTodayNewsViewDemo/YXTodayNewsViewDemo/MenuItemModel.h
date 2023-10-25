@@ -6,13 +6,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <YXTodayNewsView/YXTodayNewsView.h>
+#import <YXTodayNewsView/YXMenuItem.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuItemModel : NSObject<YXMenuItem>
 
 @property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subTitle;
+@property (nonatomic, copy) NSString *avatarUrl;
 
 @end
 

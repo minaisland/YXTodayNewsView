@@ -10,7 +10,6 @@
 #import "YXTodayNewsView.h"
 #import "YXTodayNewsSideImageCell.h"
 #import "UIView+YXExtension.h"
-#import "YXSideLeftView.h"
 #import <SDWebImage/SDWebImage.h>
 
 static CGFloat _viewWidth;
@@ -58,9 +57,16 @@ static CGFloat _sideBtnMaxHeight;
     [YXTodayNewsView calculateSize:frame.size];
     self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, _viewWidth, _viewHeight)];
     if (self) {
-        [self initUI];
+        
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (!self.coverView.superview) {
+        [self initUI];
+    }
 }
 
 - (void)initUI {
@@ -69,8 +75,16 @@ static CGFloat _sideBtnMaxHeight;
     [self addSubview:self.sideRightView];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < self.dataArray.count) {
+        id<YXMenuItem> item = self.dataArray[indexPath.row];
+        self.sideLeftView.menuItem = item;
+        [self.coverView sd_setImageWithURL:[NSURL URLWithString:item.imageUrl]];
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.menuItems.count;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,15 +92,27 @@ static CGFloat _sideBtnMaxHeight;
     if (!cell) {
         cell = [[YXTodayNewsSideImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YXTodayNewsSideImageCell"];
     }
-    if (indexPath.row < self.menuItems.count) {
-        id<YXMenuItem> item = self.menuItems[indexPath.row];
+    if (indexPath.row < self.dataArray.count) {
+        id<YXMenuItem> item = self.dataArray[indexPath.row];
         cell.imageUrl = item.imageUrl;
     }
     return cell;
 }
 
-- (void)setDate:(NSDate *)date {
-    self.sideLeftView.date = date;
+- (YXTodayNewsParam *)param {
+    if (!_param) {
+        _param = [YXTodayNewsParam defaultParam];
+    }
+    return _param;
+}
+
+- (void)setDataArray:(NSArray *)dataArray {
+    _dataArray = dataArray;
+    [self.sideMenuView reloadData];
+//    [self.coverView sd_setImageWithURL:[NSURL URLWithString:[[dataArray firstObject] imageUrl]]];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self tableView:self.sideMenuView didSelectRowAtIndexPath:indexPath];
+    [self.sideMenuView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)setCoverUrl:(NSString *)coverUrl {
@@ -94,20 +120,6 @@ static CGFloat _sideBtnMaxHeight;
     if (coverUrl && coverUrl.length > 0) {
         [self.coverView sd_setImageWithURL:[NSURL URLWithString:coverUrl]];
     }
-}
-
-- (UIColor *)sideViewStartColor {
-    if (!_sideViewStartColor) {
-        _sideViewStartColor = kSideViewStartColor;
-    }
-    return _sideViewStartColor;
-}
-
-- (UIColor *)sideViewEndColor {
-    if (!_sideViewEndColor) {
-        _sideViewEndColor = kSideViewEndColor;
-    }
-    return _sideViewEndColor;
 }
 
 - (UIImageView *)coverView {
@@ -122,6 +134,7 @@ static CGFloat _sideBtnMaxHeight;
 - (YXSideLeftView *)sideLeftView {
     if (!_sideLeftView) {
         _sideLeftView = [[YXSideLeftView alloc] initWithFrame:self.coverView.frame];
+        _sideLeftView.param = self.param;
     }
     return _sideLeftView;
 }
@@ -134,8 +147,8 @@ static CGFloat _sideBtnMaxHeight;
         gradientLayer.frame = _sideRightView.bounds;
         gradientLayer.startPoint = CGPointMake(0, 0);
         gradientLayer.endPoint = CGPointMake(0, 1);
-        gradientLayer.colors = @[(__bridge id)self.sideViewStartColor.CGColor,
-                                     (__bridge id)self.sideViewEndColor.CGColor];
+        gradientLayer.colors = @[(__bridge id)self.param.yxSideRightStartColor.CGColor,
+                                     (__bridge id)self.param.yxSideRightEndColor.CGColor];
         gradientLayer.locations = @[@(0.5f), @(1.0f)];
 
         [_sideRightView.layer addSublayer:gradientLayer];

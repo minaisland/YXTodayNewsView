@@ -12,7 +12,7 @@ import Fakery
 class FakeryHelper: NSObject {
     
     @objc
-    static let shared = FakeryHelper(locale: "zh-CN")
+    static let shared = FakeryHelper(locale: "en-US")
     
     let faker: Faker
     
@@ -67,15 +67,30 @@ class FakeryHelper: NSObject {
     }
     
     @objc
+    public var avatar: String {
+        let num = Int.random(in: 6000000..<6712439)
+        return "https://avatars.githubusercontent.com/u/\(num)?v=4"
+    }
+    
+    @objc
     public var menuItemArray: Array<MenuItemModel> {
         let count = Int.random(in: 4..<8)
         var arr = [MenuItemModel]()
         for _ in 0 ... count {
             let model = MenuItemModel()
             model.imageUrl = self.image
+            model.date = self.randomDate
+            model.title = "今日鑫首"
+            model.subTitle = "悦鑫菜园真人种植体验"
+            model.avatarUrl = self.avatar;
             arr.append(model)
         }
         return arr
+    }
+    
+    @objc
+    public var randomDate: Date {
+        faker.date.birthday(18, 25);
     }
     
     @objc

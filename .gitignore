@@ -25,3 +25,8 @@ DerivedData
 #
 Pods/
 .browse.VC.db
+
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride

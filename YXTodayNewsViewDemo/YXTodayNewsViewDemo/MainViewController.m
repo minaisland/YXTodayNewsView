@@ -19,9 +19,12 @@
     [super viewDidLoad];
     
     YXTodayNewsView *v = [[YXTodayNewsView alloc] initWithPoint:CGPointMake(0, 200)];
-    v.date = [NSDate date];
-    v.coverUrl = [FakeryHelper shared].image;
-    v.menuItems = [FakeryHelper shared].menuItemArray;
+    v.param
+        .yxSideLeftYearFontSet([UIFont fontWithName:@"Oswald-Medium" size:8.5])
+        .yxSideLeftMonthdayFontSet([UIFont fontWithName:@"Oswald-Medium" size:20])
+        .yxSideLeftDateSlashFontSet([UIFont fontWithName:@"Oswald-Medium" size:12])
+        .yxSideLeftMonthdaybaselineOffsetSet(1.0f);
+    v.dataArray = [FakeryHelper shared].menuItemArray;
     [self.view addSubview:v];
     // Do any additional setup after loading the view.
 }
