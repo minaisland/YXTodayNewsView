@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "YXTodayNewsView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "With YXTodayNewsView, you can easily create today news in your apps."
   s.homepage     = "https://github.com/minaisland/YXTodayNewsView.git"
   s.license      = { :type => 'MIT License', :file => 'LICENSE' }
