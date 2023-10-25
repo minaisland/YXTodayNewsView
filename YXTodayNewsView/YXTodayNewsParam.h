@@ -51,7 +51,7 @@ YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIColo
 
 YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, NSShadow*,               yxTextShadow)
 
-YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftMonthdaybaselineOffset)
+YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftMonthdayBaselineOffset)
 
 YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxSideLeftSubTitleBottomMargin)
 

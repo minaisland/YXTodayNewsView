@@ -29,7 +29,7 @@
         .yxSideLeftYearFontSet([UIFont fontWithName:@"Oswald-Medium" size:8.5])
         .yxSideLeftMonthdayFontSet([UIFont fontWithName:@"Oswald-Medium" size:20])
         .yxSideLeftDateSlashFontSet([UIFont fontWithName:@"Oswald-Medium" size:12])
-        .yxSideLeftMonthdaybaselineOffsetSet(1.0f);
+        .yxSideLeftMonthdayBaselineOffsetSet(1.0f);
     v.dataArray = [FakeryHelper shared].menuItemArray;
     v.delegate = self;
     [self.view addSubview:v];

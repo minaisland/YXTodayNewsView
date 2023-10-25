@@ -60,9 +60,9 @@
     self.yearLabel.textAlignment = NSTextAlignmentCenter;
     
     NSMutableAttributedString *mutStr = [[NSMutableAttributedString alloc] initWithString:[self dateStringFromFormat:@"MM/dd"]];
-    NSDictionary *attrs = @{NSFontAttributeName: self.param.yxSideLeftMonthdayFont,NSForegroundColorAttributeName: self.param.yxSideLeftDateColor, NSShadowAttributeName: self.param.yxTextShadow, NSBaselineOffsetAttributeName: @(self.param.yxSideLeftMonthdaybaselineOffset)};
+    NSDictionary *attrs = @{NSFontAttributeName: self.param.yxSideLeftMonthdayFont,NSForegroundColorAttributeName: self.param.yxSideLeftDateColor, NSShadowAttributeName: self.param.yxTextShadow, NSBaselineOffsetAttributeName: @(self.param.yxSideLeftMonthdayBaselineOffset)};
     [mutStr addAttributes:attrs range:NSMakeRange(0, 2)];
-    [mutStr addAttributes:@{NSFontAttributeName: self.param.yxSideLeftDateSlashFont,NSForegroundColorAttributeName: self.param.yxSideLeftDateColor, NSShadowAttributeName: self.param.yxTextShadow, NSBaselineOffsetAttributeName: @(self.param.yxSideLeftMonthdaybaselineOffset)} range:NSMakeRange(2, 1)];
+    [mutStr addAttributes:@{NSFontAttributeName: self.param.yxSideLeftDateSlashFont,NSForegroundColorAttributeName: self.param.yxSideLeftDateColor, NSShadowAttributeName: self.param.yxTextShadow, NSBaselineOffsetAttributeName: @(self.param.yxSideLeftMonthdayBaselineOffset)} range:NSMakeRange(2, 1)];
     [mutStr addAttributes:attrs range:NSMakeRange(3, 2)];
     
     self.monthdayLabel.attributedText = mutStr;

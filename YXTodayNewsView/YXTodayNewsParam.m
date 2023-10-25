@@ -23,7 +23,7 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIColor*,            
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIColor*,                yxSideRightStartColor)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIColor*,                yxSideRightEndColor)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, NSShadow*,                yxTextShadow)
-YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,                yxSideLeftMonthdaybaselineOffset)
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,                yxSideLeftMonthdayBaselineOffset)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,                yxSideLeftSubTitleBottomMargin)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,               yxSideLeftAvatarBottomMargin)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,               yxSideLeftAvatarWidth)
@@ -45,7 +45,7 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,             
         _yxSideLeftMonthdayFont = kMediumFont(20);
         _yxSideLeftDateSlashFont = kMediumFont(12);
         
-        _yxSideLeftMonthdaybaselineOffset = 0;
+        _yxSideLeftMonthdayBaselineOffset = 0;
         _yxSideLeftSubTitleBottomMargin = 44.0f;
         
         _yxSideLeftAvatarBottomMargin = 15.0f;
