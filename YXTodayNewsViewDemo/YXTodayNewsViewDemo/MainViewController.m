@@ -9,7 +9,7 @@
 #import <YXTodayNewsView/YXTodayNewsView.h>
 #import <YXTodayNewsViewDemo-Swift.h>
 
-@interface MainViewController ()
+@interface MainViewController ()<YXTodayNewsViewDelegate>
 
 @end
 
@@ -25,8 +25,13 @@
         .yxSideLeftDateSlashFontSet([UIFont fontWithName:@"Oswald-Medium" size:12])
         .yxSideLeftMonthdaybaselineOffsetSet(1.0f);
     v.dataArray = [FakeryHelper shared].menuItemArray;
+    v.delegate = self;
     [self.view addSubview:v];
     // Do any additional setup after loading the view.
+}
+
+- (void)todayNewsView:(YXTodayNewsView *)todayNewsView avatarViewOnPressWithItem:(id<YXMenuItem>)item {
+    NSLog(@"%@", item);
 }
 
 

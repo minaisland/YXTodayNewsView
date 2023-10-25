@@ -16,12 +16,11 @@ static CGFloat _viewWidth;
 static CGFloat _viewHeight;
 static CGFloat _sideMenuWidth;
 static CGFloat _sideMenuHeight;
-static CGFloat _coverWidth;
+static CGFloat _sideLeftWidth;
 static CGFloat _sideBtnMaxHeight;
 
 @interface YXTodayNewsView()<UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) UIImageView *coverView;
 @property (nonatomic, strong) YXSideLeftView *sideLeftView;
 @property (nonatomic, strong) UIView *sideRightView;
 @property (nonatomic, strong) UITableView *sideMenuView;
@@ -41,8 +40,8 @@ static CGFloat _sideBtnMaxHeight;
     _sideBtnMaxHeight = _viewWidth*(29.0/375);
     //界面整体高度
     _viewHeight = (kGeneralPadding+_sideMenuHeight)*4+_sideBtnMaxHeight;
-    
-    _coverWidth = _viewWidth - kGeneralPadding*3 - _sideMenuWidth;
+    //左侧边栏宽度
+    _sideLeftWidth = _viewWidth - kGeneralPadding*3 - _sideMenuWidth;
 }
 
 - (id)init {
@@ -64,22 +63,26 @@ static CGFloat _sideBtnMaxHeight;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    if (!self.coverView.superview) {
+    if (!self.sideLeftView.superview) {
         [self initUI];
     }
 }
 
 - (void)initUI {
-    [self addSubview:self.coverView];
     [self addSubview:self.sideLeftView];
     [self addSubview:self.sideRightView];
+}
+
+- (void)avatarViewOnPress:(UIButton *)btn {
+    if ([self.delegate respondsToSelector:@selector(todayNewsView:avatarViewOnPressWithItem:)]) {
+        [self.delegate todayNewsView:self avatarViewOnPressWithItem:self.sideLeftView.menuItem];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.dataArray.count) {
         id<YXMenuItem> item = self.dataArray[indexPath.row];
         self.sideLeftView.menuItem = item;
-        [self.coverView sd_setImageWithURL:[NSURL URLWithString:item.imageUrl]];
     }
 }
 
@@ -109,39 +112,23 @@ static CGFloat _sideBtnMaxHeight;
 - (void)setDataArray:(NSArray *)dataArray {
     _dataArray = dataArray;
     [self.sideMenuView reloadData];
-//    [self.coverView sd_setImageWithURL:[NSURL URLWithString:[[dataArray firstObject] imageUrl]]];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self tableView:self.sideMenuView didSelectRowAtIndexPath:indexPath];
     [self.sideMenuView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
-- (void)setCoverUrl:(NSString *)coverUrl {
-    _coverUrl = coverUrl;
-    if (coverUrl && coverUrl.length > 0) {
-        [self.coverView sd_setImageWithURL:[NSURL URLWithString:coverUrl]];
-    }
-}
-
-- (UIImageView *)coverView {
-    if (!_coverView) {
-        _coverView = [[UIImageView alloc] initWithFrame:CGRectMake(kGeneralPadding, 0, _coverWidth, _viewHeight)];
-        _coverView.contentMode = UIViewContentModeScaleAspectFill;
-        _coverView.clipsToBounds = YES;
-    }
-    return _coverView;
-}
-
 - (YXSideLeftView *)sideLeftView {
     if (!_sideLeftView) {
-        _sideLeftView = [[YXSideLeftView alloc] initWithFrame:self.coverView.frame];
+        _sideLeftView = [[YXSideLeftView alloc] initWithFrame:CGRectMake(kGeneralPadding, 0, _sideLeftWidth, _viewHeight)];
         _sideLeftView.param = self.param;
+        [_sideLeftView.avatarBtn addTarget:self action:@selector(avatarViewOnPress:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sideLeftView;
 }
 
 - (UIView *)sideRightView {
     if (!_sideRightView) {
-        _sideRightView = [[UIView alloc] initWithFrame:CGRectMake(kGeneralPadding + _coverWidth, 0, _sideMenuWidth + kGeneralPadding, _viewHeight)];
+        _sideRightView = [[UIView alloc] initWithFrame:CGRectMake(kGeneralPadding + _sideLeftWidth, 0, _sideMenuWidth + kGeneralPadding, _viewHeight)];
         
         CAGradientLayer *gradientLayer = [CAGradientLayer layer];
         gradientLayer.frame = _sideRightView.bounds;

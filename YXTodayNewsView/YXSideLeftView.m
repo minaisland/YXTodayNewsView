@@ -11,6 +11,7 @@
 
 @interface YXSideLeftView()
 
+@property (nonatomic, strong) UIImageView *coverView;
 @property (nonatomic, strong) UILabel *yearLabel;
 @property (nonatomic, strong) UILabel *monthdayLabel;
 @property (nonatomic, strong) UIView *lineView;
@@ -34,6 +35,7 @@
 }
 
 - (void)initUI {
+    [self addSubview:self.coverView];
     self.yearLabel = [self createLabel];
     self.monthdayLabel = [self createLabel];
     self.titleLabel = [self createLabel];
@@ -43,6 +45,7 @@
 
 - (void)setMenuItem:(id<YXMenuItem>)menuItem {
     _menuItem = menuItem;
+    [self setCoverUrl:menuItem.imageUrl];
     [self setDate:menuItem.date];
     [self setTitle:menuItem.title];
     [self setSubTitle:menuItem.subTitle];
@@ -73,6 +76,12 @@
     }
 }
 
+- (void)setCoverUrl:(NSString *)coverUrl {
+    if (coverUrl && coverUrl.length > 0) {
+        [self.coverView sd_setImageWithURL:[NSURL URLWithString:coverUrl]];
+    }
+}
+
 - (void)setTitle:(NSString *)title {
     self.titleLabel.attributedText = [self createAttributedString:title font:self.param.yxSideLeftTitleFont textColor:self.param.yxSideLeftTitleColor];
     [self.titleLabel sizeToFit];
@@ -89,12 +98,23 @@
 - (void)setAvatarUrl:(NSString *)url {
     self.avatarView.frame = CGRectMake(14, self.yx_height-self.param.yxSideLeftAvatarWidth-self.param.yxSideLeftAvatarBottomMargin, self.param.yxSideLeftAvatarWidth, self.param.yxSideLeftAvatarWidth);
     [self.avatarView sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.avatarBtn.frame = CGRectMake(0, 0, 44, 44);
+    self.avatarBtn.center = self.avatarView.center;
 }
 
 - (void)setName:(NSString *)name {
     self.nameLabel.attributedText = [self createAttributedString:name font:self.param.yxSideLeftNameFont textColor:self.param.yxSideLeftNameColor];
     CGSize size = [self.nameLabel sizeThatFits:CGSizeMake(200, 18)];
     self.nameLabel.frame = CGRectMake(self.avatarView.yx_x + self.avatarView.yx_width + 8, (self.avatarView.yx_y*2 + self.avatarView.yx_height - size.height)/2, size.width, size.height);
+}
+
+- (UIImageView *)coverView {
+    if (!_coverView) {
+        _coverView = [[UIImageView alloc] initWithFrame:CGRectMake(kGeneralPadding, 0, self.yx_width, self.yx_height)];
+        _coverView.contentMode = UIViewContentModeScaleAspectFill;
+        _coverView.clipsToBounds = YES;
+    }
+    return _coverView;
 }
 
 - (UIView *)lineView {
@@ -121,6 +141,14 @@
         [self addSubview:_avatarView];
     }
     return _avatarView;
+}
+
+- (UIButton *)avatarBtn {
+    if (!_avatarBtn) {
+        _avatarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self addSubview:_avatarBtn];
+    }
+    return _avatarBtn;
 }
 
 - (NSString *)dateStringFromFormat:(NSString *)format {

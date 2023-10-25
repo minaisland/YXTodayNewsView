@@ -9,13 +9,22 @@
 #import "YXMenuItem.h"
 #import "YXSideLeftView.h"
 
+@class YXTodayNewsView;
+
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol YXTodayNewsViewDelegate <NSObject>
+
+@optional
+- (void)todayNewsView:(YXTodayNewsView *)todayNewsView avatarViewOnPressWithItem:(id<YXMenuItem>)item;
+
+@end
 
 @interface YXTodayNewsView : UIView
 
 @property (nonatomic, strong) NSArray *dataArray;
-@property (nonatomic, strong) NSString *coverUrl;
 @property (nonatomic, strong) YXTodayNewsParam *param;
+@property (nonatomic, weak) id<YXTodayNewsViewDelegate> delegate;
 
 - (id)initWithPoint:(CGPoint)point;
 
