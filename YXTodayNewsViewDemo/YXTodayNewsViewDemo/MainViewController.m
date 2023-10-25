@@ -9,6 +9,12 @@
 #import <YXTodayNewsView/YXTodayNewsView.h>
 #import <YXTodayNewsViewDemo-Swift.h>
 
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#   define DLog(...)
+#endif
+
 @interface MainViewController ()<YXTodayNewsViewDelegate>
 
 @end
@@ -31,7 +37,11 @@
 }
 
 - (void)todayNewsView:(YXTodayNewsView *)todayNewsView avatarViewOnPressWithItem:(id<YXMenuItem>)item {
-    NSLog(@"%@", item);
+    DLog(@"%@", item);
+}
+
+- (void)todayNewsView:(YXTodayNewsView *)todayNewsView sideLeftViewOnTapWithItem:(id<YXMenuItem>)item {
+    DLog(@"%@", item);
 }
 
 

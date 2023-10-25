@@ -24,6 +24,7 @@ static CGFloat _sideBtnMaxHeight;
 @property (nonatomic, strong) YXSideLeftView *sideLeftView;
 @property (nonatomic, strong) UIView *sideRightView;
 @property (nonatomic, strong) UITableView *sideMenuView;
+@property (nonatomic, strong) UITapGestureRecognizer *sideLeftViewTapGesture;
 
 @end
 
@@ -79,6 +80,12 @@ static CGFloat _sideBtnMaxHeight;
     }
 }
 
+- (void)sideLeftViewOnTap:(UITapGestureRecognizer *)gesture {
+    if ([self.delegate respondsToSelector:@selector(todayNewsView:sideLeftViewOnTapWithItem:)]) {
+        [self.delegate todayNewsView:self sideLeftViewOnTapWithItem:self.sideLeftView.menuItem];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.dataArray.count) {
         id<YXMenuItem> item = self.dataArray[indexPath.row];
@@ -121,9 +128,17 @@ static CGFloat _sideBtnMaxHeight;
     if (!_sideLeftView) {
         _sideLeftView = [[YXSideLeftView alloc] initWithFrame:CGRectMake(kGeneralPadding, 0, _sideLeftWidth, _viewHeight)];
         _sideLeftView.param = self.param;
+        [_sideLeftView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sideLeftViewOnTap:)]];
         [_sideLeftView.avatarBtn addTarget:self action:@selector(avatarViewOnPress:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sideLeftView;
+}
+
+- (UITapGestureRecognizer *)sideLeftViewTapGesture {
+    if (!_sideLeftViewTapGesture) {
+        _sideLeftViewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sideLeftViewOnTap:)];
+    }
+    return _sideLeftViewTapGesture;
 }
 
 - (UIView *)sideRightView {
