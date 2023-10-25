@@ -118,7 +118,7 @@
 
 - (UIImageView *)coverView {
     if (!_coverView) {
-        _coverView = [[UIImageView alloc] initWithFrame:CGRectMake(kGeneralPadding, 0, self.yx_width, self.yx_height)];
+        _coverView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.yx_width, self.yx_height)];
         _coverView.contentMode = UIViewContentModeScaleAspectFill;
         _coverView.clipsToBounds = YES;
         [_coverView yx_setRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadius:4.0f];
