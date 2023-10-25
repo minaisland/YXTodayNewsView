@@ -1,10 +1,10 @@
 PODS:
   - Fakery (5.1.0)
-  - SDWebImage (5.18.3):
-    - SDWebImage/Core (= 5.18.3)
-  - SDWebImage/Core (5.18.3)
+  - SDWebImage (5.0.0):
+    - SDWebImage/Core (= 5.0.0)
+  - SDWebImage/Core (5.0.0)
   - YXTodayNewsView (0.0.1):
-    - SDWebImage (= 5.18.3)
+    - SDWebImage (= 5.0.0)
 
 DEPENDENCIES:
   - Fakery
@@ -21,8 +21,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Fakery: a90caff00ca5cacde6c161c3eafc72314a03d34d
-  SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
-  YXTodayNewsView: ae3eadfdac62a00ac1c5b0c992bbbe10f91e560d
+  SDWebImage: 5de80a0302de9e377e62f47d2fa1304efff0e55f
+  YXTodayNewsView: a75bcf29befd3d24fa52c215c017e8e3a3bd6e36
 
 PODFILE CHECKSUM: 81f2226e4cb610a87cb7439ae97243104963dbd4
 

@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
 #  s.resource = "YXTodayNewsView/Resources/*.xcassets"
   s.resource_bundles = {"Resources" => ["YXTodayNewsView/Resources/*.xcassets"]}
   s.requires_arc = true
-  s.dependency 'SDWebImage', '5.18.3'
+  s.dependency 'SDWebImage', '>= 5.0.0'
 end
