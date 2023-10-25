@@ -66,6 +66,8 @@ YXTodayNewsPropStatementAndPropSetFuncStatement(strong, YXTodayNewsParam, UIColo
 YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, UIEdgeInsets,               yxSideLeftLikeTitleInsets)
 
 YXTodayNewsPropStatementAndPropSetFuncStatement(copy, YXTodayNewsParam, NSString *,               yxSideRightBottomTitle)
+/// 左右边距 default [5.0f]
+YXTodayNewsPropStatementAndPropSetFuncStatement(assign, YXTodayNewsParam, CGFloat,               yxLeftRightPadding)
 
 + (instancetype)defaultParam;
 

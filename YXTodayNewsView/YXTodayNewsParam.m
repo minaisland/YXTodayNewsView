@@ -31,6 +31,7 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIFont*,             
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIColor*,               yxSideLeftLikeTitleColor)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, UIEdgeInsets,               yxSideLeftLikeTitleInsets)
 YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, NSString *,               yxSideRightBottomTitle)
+YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, CGFloat,               yxLeftRightPadding)
 
 + (YXTodayNewsParam *)defaultParam {
     return [YXTodayNewsParam new];
@@ -61,6 +62,8 @@ YXTodayNewsPagePropSetFuncImplementation(YXTodayNewsParam, NSString *,          
         _yxSideLeftLikeTitleColor = _yxSideLeftTitleColor = _yxSideLeftSubTitleColor = _yxSideLeftNameColor = _yxSideLeftDateColor = [UIColor whiteColor];
         
         _yxSideRightBottomTitle = @"回顾";
+        
+        _yxLeftRightPadding = 5.0f;
         
         _yxTextShadow = [self defaultTextShadow];
     }

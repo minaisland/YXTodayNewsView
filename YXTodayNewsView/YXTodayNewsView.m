@@ -138,7 +138,7 @@ static CGFloat _sideBtnMaxHeight;
 
 - (YXSideLeftView *)sideLeftView {
     if (!_sideLeftView) {
-        _sideLeftView = [[YXSideLeftView alloc] initWithFrame:CGRectMake(kGeneralPadding, 0, _sideLeftWidth, _viewHeight)];
+        _sideLeftView = [[YXSideLeftView alloc] initWithFrame:CGRectMake(self.param.yxLeftRightPadding, 0, _sideLeftWidth, _viewHeight)];
         _sideLeftView.param = self.param;
         [_sideLeftView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sideLeftViewOnTap:)]];
         [_sideLeftView.avatarBtn addTarget:self action:@selector(avatarViewOnPress:) forControlEvents:UIControlEventTouchUpInside];
@@ -149,7 +149,7 @@ static CGFloat _sideBtnMaxHeight;
 
 - (UIView *)sideRightView {
     if (!_sideRightView) {
-        _sideRightView = [[UIView alloc] initWithFrame:CGRectMake(kGeneralPadding + _sideLeftWidth, 0, _sideMenuWidth + kGeneralPadding, _viewHeight)];
+        _sideRightView = [[UIView alloc] initWithFrame:CGRectMake(self.param.yxLeftRightPadding + _sideLeftWidth, 0, _sideMenuWidth + kGeneralPadding, _viewHeight)];
         [_sideRightView yx_setRoundingCorners:(UIRectCornerTopRight | UIRectCornerBottomRight) cornerRadius:4.0f];
         CAGradientLayer *gradientLayer = [CAGradientLayer layer];
         gradientLayer.frame = _sideRightView.bounds;
